@@ -1,0 +1,28 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# Python / virtual env
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Node
+node_modules/
+
+# Logs / temp
+*.log
+tmp/
+temp/
+
+# GBrain / local runtime
+.gbrain/
+.pglite/
+.cache/
+dist/
+build/
+
+# Secrets
+.env
+.env.*

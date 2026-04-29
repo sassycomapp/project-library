@@ -1,0 +1,27 @@
+{
+  "$schema": "https://opencode.ai/schema/opencode.json",
+  "default_agent": "plan",
+  "permission": {
+    "edit": {
+      "C:\\_mb2-cs-app\\mb-2-cs\\todo.md": "allow",
+      "*": "ask"
+    },
+    "webfetch": "ask",
+    "bash": {
+      "*": "ask"
+    },
+    "external_directory": {
+      "C:\\_mb2-cs-app\\mb-2-cs\\**": "allow"
+    }
+  },
+  "agents": {
+    "plan": {
+      "model": "openrouter/qwen/qwen3-max-thinking",
+      "description": "Primary agent for document analysis, validation, provenance checks, architectural reasoning, and refactor planning."
+    },
+    "build": {
+      "model": "openrouter/qwen/qwen3.6-plus",
+      "description": "Secondary agent for tightly scoped document tasks only when explicitly instructed by the user."
+    }
+  }
+}
