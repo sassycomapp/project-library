@@ -1,5 +1,3 @@
-# This is a non-working copy of the file valid for reference 2026-04-25
-
 db_schema:
   activity_log:
     client: none
@@ -29,16 +27,12 @@ db_schema:
       client_hidden: null
       name: ip_address
       type: string
+    indexes: []
     server: full
     title: activity_log
   availability_exceptions:
     client: none
     columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: resource_id
-      target: bookable_resources
-      type: link_single
     - admin_ui: {width: 200}
       client_hidden: null
       name: exception_date
@@ -59,16 +53,17 @@ db_schema:
       client_hidden: null
       name: reason
       type: string
+    - admin_ui: {order: 6, width: 200}
+      client_hidden: false
+      name: resource_id
+      target: users
+      type: link_single
+    indexes: []
     server: full
     title: availability_exceptions
   availability_rules:
     client: none
     columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: resource_id
-      target: bookable_resources
-      type: link_single
     - admin_ui: {width: 200}
       client_hidden: null
       name: day_of_week
@@ -85,41 +80,14 @@ db_schema:
       client_hidden: null
       name: is_active
       type: bool
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: resource_id
+      target: users
+      type: link_single
+    indexes: []
     server: full
     title: availability_rules
-  backups:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: backup_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: backup_type
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: backup_date
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: backup_size
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: backup_url
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: retention_days
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: creation_date
-      type: datetime
-    server: full
-    title: backups
   blog_categories:
     client: none
     columns:
@@ -144,6 +112,7 @@ db_schema:
       client_hidden: null
       name: description
       type: string
+    indexes: []
     server: full
     title: blog_categories
   blog_posts:
@@ -208,53 +177,9 @@ db_schema:
       client_hidden: null
       name: view_count
       type: number
+    indexes: []
     server: full
     title: blog_posts
-  bookable_resources:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: resource_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: name
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: resource_type
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: description
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: capacity
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: hourly_rate
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: daily_rate
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: metadata
-      type: simpleObject
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: is_active
-      type: bool
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    server: full
-    title: bookable_resources
   booking_metadata_schemas:
     client: none
     columns:
@@ -274,6 +199,7 @@ db_schema:
       client_hidden: null
       name: is_active
       type: bool
+    indexes: []
     server: full
     title: booking_metadata_schemas
   bookings:
@@ -283,16 +209,6 @@ db_schema:
       client_hidden: null
       name: booking_id
       type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_id
-      target: customers
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: resource_id
-      target: bookable_resources
-      type: link_single
     - admin_ui: {width: 200}
       client_hidden: null
       name: service_id
@@ -351,6 +267,12 @@ db_schema:
       name: contact_id
       target: contacts
       type: link_single
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: resource_id
+      target: users
+      type: link_single
+    indexes: []
     server: full
     title: bookings
   business_profile:
@@ -432,16 +354,12 @@ db_schema:
       client_hidden: false
       name: timezone
       type: string
+    indexes: []
     server: full
     title: business_profile
   client_notes:
     client: none
     columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_id
-      target: customers
-      type: link_single
     - admin_ui: {width: 200}
       client_hidden: null
       name: author_id
@@ -467,6 +385,12 @@ db_schema:
       client_hidden: null
       name: is_confidential
       type: bool
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: contact_id
+      target: contacts
+      type: link_single
+    indexes: []
     server: full
     title: client_notes
   config:
@@ -493,6 +417,7 @@ db_schema:
       name: updated_by
       target: users
       type: link_single
+    indexes: []
     server: full
     title: config
   contact_campaigns:
@@ -532,6 +457,7 @@ db_schema:
       client_hidden: null
       name: completed_date
       type: datetime
+    indexes: []
     server: full
     title: contact_campaigns
   contact_counter:
@@ -541,6 +467,7 @@ db_schema:
       client_hidden: false
       name: value
       type: number
+    indexes: []
     server: full
     title: contact_counter
   contact_events:
@@ -575,6 +502,7 @@ db_schema:
       client_hidden: null
       name: user_visible
       type: bool
+    indexes: []
     server: full
     title: contact_events
   contact_submissions:
@@ -622,6 +550,7 @@ db_schema:
       client_hidden: false
       name: auto_reply_sent
       type: bool
+    indexes: []
     server: full
     title: contact_submissions
   contacts:
@@ -704,79 +633,9 @@ db_schema:
       client_hidden: null
       name: updated_at
       type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: false
-      name: zoho_crm_id
-      type: string
+    indexes: []
     server: full
     title: contacts
-  customers:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: user_id
-      target: users
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: first_name
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: last_name
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: email
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: phone
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: address
-      type: simpleObject
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: notes
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: tags
-      type: simpleObject
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: lifetime_value
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: total_bookings
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: status
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: updated_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: contact_id
-      target: contacts
-      type: link_single
-    server: full
-    title: customers
   email_campaigns:
     client: none
     columns:
@@ -833,6 +692,7 @@ db_schema:
       client_hidden: null
       name: campaign_settings
       type: simpleObject
+    indexes: []
     server: full
     title: email_campaigns
   email_config:
@@ -858,6 +718,7 @@ db_schema:
       client_hidden: false
       name: sender_domain_verified
       type: bool
+    indexes: []
     server: full
     title: email_config
   email_log:
@@ -888,6 +749,7 @@ db_schema:
       client_hidden: null
       name: error_message
       type: string
+    indexes: []
     server: full
     title: email_log
   email_templates:
@@ -926,130 +788,9 @@ db_schema:
       client_hidden: null
       name: is_active
       type: bool
+    indexes: []
     server: full
     title: email_templates
-  event_registrations:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: registration_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: event_id
-      target: events
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_id
-      target: customers
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: num_attendees
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: total_paid
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: payment_status
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: registration_date
-      type: datetime
-    server: full
-    title: event_registrations
-  events:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: event_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: title
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: description
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: event_date
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: location
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: capacity
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: price_per_person
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: status
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: end_date
-      type: datetime
-    server: full
-    title: events
-  expenses:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: expense_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: expense_date
-      type: date
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: category
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: description
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: amount
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: currency
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: receipt
-      type: media
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_by
-      target: users
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    server: full
-    title: expenses
   files:
     client: none
     columns:
@@ -1065,6 +806,7 @@ db_schema:
       client_hidden: null
       name: file_version
       type: string
+    indexes: []
     server: full
     title: Files
   invoice:
@@ -1078,11 +820,6 @@ db_schema:
       client_hidden: null
       name: invoice_number
       type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_id
-      target: customers
-      type: link_single
     - admin_ui: {width: 200}
       client_hidden: null
       name: invoice_date
@@ -1127,6 +864,12 @@ db_schema:
       client_hidden: null
       name: created_at
       type: datetime
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: contact_id
+      target: contacts
+      type: link_single
+    indexes: []
     server: full
     title: invoice
   invoice_items:
@@ -1153,99 +896,9 @@ db_schema:
       client_hidden: null
       name: amount
       type: number
+    indexes: []
     server: full
     title: invoice_items
-  kb_articles:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: article_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: category_id
-      target: kb_categories
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: title
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: slug
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: content
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: keywords
-      type: simpleObject
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: view_count
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: helpful_count
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: unhelpful_count
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: is_published
-      type: bool
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: updated_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: excerpt
-      type: string
-    server: full
-    title: kb_articles
-  kb_categories:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: name
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: slug
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: icon
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: description
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: sort_order
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: category_id
-      type: string
-    server: full
-    title: kb_categories
   landing_pages:
     client: none
     columns:
@@ -1303,6 +956,7 @@ db_schema:
       client_hidden: false
       name: updated_at
       type: datetime
+    indexes: []
     server: full
     title: landing_pages
   lead_captures:
@@ -1349,6 +1003,7 @@ db_schema:
       client_hidden: null
       name: conversions_count
       type: number
+    indexes: []
     server: full
     title: lead_captures
   leads:
@@ -1407,6 +1062,7 @@ db_schema:
       name: converted_to_contact_id
       target: contacts
       type: link_single
+    indexes: []
     server: full
     title: leads
   pages:
@@ -1448,6 +1104,7 @@ db_schema:
       client_hidden: null
       name: page_title
       type: string
+    indexes: []
     server: full
     title: pages
   payment_config:
@@ -1463,27 +1120,11 @@ db_schema:
       type: string
     - admin_ui: {width: 200}
       client_hidden: null
-      name: stripe_secret_key
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: paystack_public_key
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: paystack_secret_key
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
       name: paystack_connected
       type: bool
     - admin_ui: {width: 200}
       client_hidden: null
       name: paypal_client_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: paypal_secret
       type: string
     - admin_ui: {width: 200}
       client_hidden: null
@@ -1513,6 +1154,7 @@ db_schema:
       client_hidden: false
       name: paypal_connected_at
       type: datetime
+    indexes: []
     server: full
     title: payment_config
   rate_limits:
@@ -1534,104 +1176,9 @@ db_schema:
       client_hidden: false
       name: last_request
       type: datetime
+    indexes: []
     server: full
     title: rate_limits
-  reviews:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: item_type
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: item_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_id
-      target: users
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: reviewer_name
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: rating
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: title
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: comment
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: is_verified_purchase
-      type: bool
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: status
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: business_response
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: helpful_count
-      type: number
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: report_reason
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: reported_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: moderated_by
-      target: users
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: moderated_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: rejection_reason
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: response_by
-      target: users
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: response_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: review_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: photos
-      type: simpleObject
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: reported_count
-      type: number
-    server: full
-    title: reviews
   segments:
     client: none
     columns:
@@ -1668,6 +1215,7 @@ db_schema:
       client_hidden: null
       name: created_date
       type: datetime
+    indexes: []
     server: full
     title: segments
   services:
@@ -1726,6 +1274,7 @@ db_schema:
       client_hidden: false
       name: video_url
       type: string
+    indexes: []
     server: full
     title: services
   tasks:
@@ -1777,6 +1326,7 @@ db_schema:
       client_hidden: null
       name: created_at
       type: datetime
+    indexes: []
     server: full
     title: tasks
   theme_config:
@@ -1802,110 +1352,9 @@ db_schema:
       client_hidden: null
       name: updated_at
       type: datetime
+    indexes: []
     server: full
     title: theme_config
-  ticket_messages:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: ticket_id
-      target: tickets
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: author_id
-      target: users
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: author_type
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: message
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: is_internal_note
-      type: bool
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: attachments
-      type: media
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    server: full
-    title: ticket_messages
-  tickets:
-    client: none
-    columns:
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: ticket_number
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_id
-      target: customers
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_name
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_email
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: subject
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: category
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: status
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: priority
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: assigned_to
-      target: users
-      type: link_single
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: resolved_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: last_reply_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: created_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: updated_at
-      type: datetime
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: ticket_id
-      type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: description
-      type: string
-    server: full
-    title: tickets
   time_entries:
     client: none
     columns:
@@ -1913,11 +1362,6 @@ db_schema:
       client_hidden: null
       name: entry_id
       type: string
-    - admin_ui: {width: 200}
-      client_hidden: null
-      name: customer_id
-      target: customers
-      type: link_single
     - admin_ui: {width: 200}
       client_hidden: null
       name: staff_id
@@ -1969,6 +1413,12 @@ db_schema:
       client_hidden: null
       name: created_at
       type: datetime
+    - admin_ui: {width: 200}
+      client_hidden: false
+      name: contact_id
+      target: contacts
+      type: link_single
+    indexes: []
     server: full
     title: time_entries
   users:
@@ -2030,6 +1480,7 @@ db_schema:
       client_hidden: false
       name: mfa
       type: simpleObject
+    indexes: []
     server: full
     title: Users
   vault:
@@ -2056,6 +1507,7 @@ db_schema:
       name: updated_by
       target: users
       type: link_single
+    indexes: []
     server: full
     title: vault
   webhook_log:
@@ -2093,6 +1545,7 @@ db_schema:
       client_hidden: null
       name: received_at
       type: datetime
+    indexes: []
     server: full
     title: webhook_log
 dependencies:

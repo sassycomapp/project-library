@@ -3,6 +3,7 @@ Date: 2026-03-23
 Status: Accepted
 Source: @authref/continue-rules-front-matter-cop.md — session 2026-03-23
 
+This ADR policy is now obsolete
 ---
 
 ## Context

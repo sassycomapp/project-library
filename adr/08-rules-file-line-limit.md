@@ -3,6 +3,7 @@
 Date: 2026-04-20
 Status: Accepted
 
+This ADR policy is now obsolete
 ---
 
 
